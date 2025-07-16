@@ -1,19 +1,26 @@
 import { Link, Stack } from 'expo-router';
-import { StyleSheet } from 'react-native';
-
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { StyleSheet, Pressable, Text, View } from 'react-native';
 
 export default function NotFoundScreen() {
   return (
     <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
-      <ThemedView style={styles.container}>
-        <ThemedText type="title">This screen does not exist.</ThemedText>
-        <Link href="/" style={styles.link}>
-          <ThemedText type="link">Go to home screen!</ThemedText>
+      <Stack.Screen options={{ title: 'Login' }} />
+      <View style={styles.container}>
+        <Text style={styles.title}>MONDELLY</Text>
+        <Text style={styles.subtitle}>A moda é você quem faz</Text>
+
+        <Link href="/fake2" asChild>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Ir para o cadastro</Text>
+          </Pressable>
         </Link>
-      </ThemedView>
+
+        <Link href="/login" asChild>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Login</Text>
+          </Pressable>
+        </Link>
+      </View>
     </>
   );
 }
@@ -21,12 +28,39 @@ export default function NotFoundScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#f5ede3', // fundo bege claro
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
   },
-  link: {
+  title: {
+    fontSize: 32,
+    fontWeight: '400',
+    letterSpacing: 2,
+    color: '#7f3d1c', // marrom elegante
+    marginBottom: 10,
+    fontFamily: 'serif', // fonte sofisticada
+  },
+  subtitle: {
+    fontSize: 14,
+    color: '#7f3d1c',
+    marginBottom: 40,
+  },
+  button: {
+    backgroundColor: '#fff',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 6,
     marginTop: 15,
-    paddingVertical: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  buttonText: {
+    color: '#7f3d1c',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
